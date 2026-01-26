@@ -3,3 +3,8 @@
   ansible.builtin.dnf:
     name: "{{ tlp_conflicting_package }}"
     state: absent
+
+- name: Install tlp packages
+  ansible.builtin.dnf:
+    name: "{{ tlp_packages }}"
+    state: present
