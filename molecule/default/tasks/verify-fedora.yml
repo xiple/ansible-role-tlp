@@ -34,4 +34,3 @@
   ansible.builtin.fail:
     msg: "{{ tlp_custom_dropin_path }} file does not exist"
   when: not tlp_custom_dropin_file.stat.exists
-
