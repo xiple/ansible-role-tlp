@@ -1,0 +1,4 @@
+---
+- name: Setup fedora
+  ansible.builtin.debug:
+    msg: "Setup fedora todo"

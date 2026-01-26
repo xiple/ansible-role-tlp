@@ -1,0 +1,4 @@
+---
+tlp_conflicting_package:
+  - tuned
+  - tuned-ppd

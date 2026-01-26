@@ -1,0 +1,9 @@
+---
+- name: Gather the package facts
+  ansible.builtin.package_facts:
+    manager: auto
+
+- name: Fail if conflicting packages are installed
+  ansible.builtin.fail:
+    msg: "Conflicting packages are installed: {{ tlp_conflicting_package | intersect(ansible_facts.packages.keys()) | join(', ') }}"
+  when: tlp_conflicting_package | intersect(ansible_facts.packages.keys()) | length > 0
