@@ -3,7 +3,7 @@
   hosts: molecule
   gather_facts: true
   vars:
-    tailscale_service_manage: false
+    tlp_service_manage: false
 
   tasks:
     - name: Load OS-specific vars
