@@ -1,4 +1,5 @@
 ---
-- name: Setup fedora
-  ansible.builtin.debug:
-    msg: "Setup fedora todo"
+- name: Uninstall conflicting packages
+  ansible.builtin.dnf:
+    name: "{{ tlp_conflicting_package }}"
+    state: absent
