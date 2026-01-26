@@ -2,3 +2,9 @@
 tlp_conflicting_package:
   - tuned
   - tuned-ppd
+
+tlp_packages:
+  - tlp
+# optional
+#  - tlp-pd
+#  - tlp-rdw
