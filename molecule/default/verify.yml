@@ -13,4 +13,3 @@
       ansible.builtin.include_tasks: tasks/verify-fedora.yml
       when:
         - ansible_facts.distribution == 'Fedora'
-
