@@ -4,6 +4,15 @@
     name: "{{ tlp_conflicting_package }}"
     state: absent
 
+- name: Mask systemd-rfkill service and socket
+  ansible.builtin.systemd:
+    name: "{{ item }}"
+    masked: true
+    state: stopped
+  loop:
+    - systemd-rfkill.service
+    - systemd-rfkill.socket
+
 - name: Install tlp packages
   ansible.builtin.dnf:
     name: "{{ tlp_packages }}"
