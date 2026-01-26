@@ -18,10 +18,20 @@
       }}
   when: tlp_packages | difference(ansible_facts.packages.keys()) | length > 0
 
-
 - name: Fail if tlp service is not enabled
   ansible.builtin.systemd_service:
     name: tlp
   register: service_status
   failed_when: service_status.status.UnitFileState == "disabled"
   when: tlp_service_manage | bool
+
+- name: Get information on tlp configuration drop-in file
+  ansible.builtin.stat:
+    path: "{{ tlp_custom_dropin_path }}"
+  register: tlp_custom_dropin_file
+
+- name: Fail if custom tlp configuration drop-in file does not exist
+  ansible.builtin.fail:
+    msg: "{{ tlp_custom_dropin_path }} file does not exist"
+  when: not tlp_custom_dropin_file.stat.exists
+

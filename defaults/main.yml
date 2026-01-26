@@ -1,3 +1,4 @@
 ---
 
 tlp_service_manage: true
+tlp_custom_conf_manage: true

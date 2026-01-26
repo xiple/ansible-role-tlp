@@ -8,3 +8,5 @@ tlp_packages:
 # optional
 #  - tlp-pd
 #  - tlp-rdw
+
+tlp_custom_dropin_path: /etc/tlp.d/01-mytlp.conf
