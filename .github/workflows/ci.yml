@@ -37,6 +37,7 @@ jobs:
       matrix:
         distro:
           - fedora43
+          - debian13
     steps:
       - name: Check out the codebase.
         uses: actions/checkout@v6
