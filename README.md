@@ -33,7 +33,7 @@ Example Playbook
 ```yaml
 - hosts: all
   vars:
-    tlp_custom_conf_manage: false
+    - tlp_custom_conf_manage: false
   roles:
     - xiple.tlp
 ```
