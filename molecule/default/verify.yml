@@ -6,6 +6,9 @@
     tlp_service_manage: false
 
   tasks:
+    - name: Load main vars
+      ansible.builtin.include_vars: "../../vars/main.yml"
+
     - name: Load OS-specific vars
       ansible.builtin.include_vars: "../../vars/{{ ansible_facts.distribution | lower }}.yml"
 
@@ -13,3 +16,13 @@
       ansible.builtin.include_tasks: tasks/verify-fedora.yml
       when:
         - ansible_facts.distribution == 'Fedora'
+
+    - name: Get information on tlp configuration drop-in file
+      ansible.builtin.stat:
+        path: "{{ tlp_custom_dropin_path }}"
+      register: tlp_custom_dropin_file
+
+    - name: Fail if custom tlp configuration drop-in file does not exist
+      ansible.builtin.fail:
+        msg: "{{ tlp_custom_dropin_path }} file does not exist"
+      when: not tlp_custom_dropin_file.stat.exists
