@@ -7,3 +7,11 @@
   ansible.builtin.include_tasks: setup-fedora.yml
   when:
     - ansible_facts.distribution == 'Fedora'
+
+- name: Install tlp custom configuration
+  ansible.builtin.copy:
+    src: 01-mytlp.conf
+    dest: "{{ tlp_custom_dropin_path }}"
+    mode: '0644'
+  when: tlp_custom_conf_manage
+  notify: Restart tlp
