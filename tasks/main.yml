@@ -8,6 +8,11 @@
   when:
     - ansible_facts.distribution == 'Fedora'
 
+- name: Include Debian tasks
+  ansible.builtin.include_tasks: setup-debian.yml
+  when:
+    - ansible_facts.distribution == 'Debian'
+
 - name: Install tlp custom configuration
   ansible.builtin.copy:
     src: 01-mytlp.conf

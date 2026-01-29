@@ -1,0 +1,12 @@
+---
+- name: Install tlp packages
+  ansible.builtin.apt:
+    name: "{{ tlp_packages }}"
+    state: present
+
+- name: Make sure tlp service is started and enabled
+  ansible.builtin.systemd_service:
+    name: tlp
+    state: started
+    enabled: true
+  when: tlp_service_manage | bool
