@@ -3,6 +3,7 @@
   ansible.builtin.apt:
     name: "{{ tlp_packages }}"
     state: present
+    update_cache: true
 
 - name: Make sure tlp service is started and enabled
   ansible.builtin.systemd_service:
