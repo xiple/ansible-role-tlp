@@ -9,7 +9,7 @@
     - systemd-rfkill.socket
 
 - name: Install tlp packages
-  ansible.builtin.pacman:
+  community.general.pacman:
     name: "{{ tlp_packages }}"
     state: present
 
