@@ -39,6 +39,7 @@ jobs:
           - fedora43
           - fedora44
           - debian13
+          - archlinux
     steps:
       - name: Check out the codebase.
         uses: actions/checkout@v6
