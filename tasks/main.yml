@@ -13,6 +13,11 @@
   when:
     - ansible_facts.distribution == 'Debian'
 
+- name: Include Archlinux tasks
+  ansible.builtin.include_tasks: setup-archlinux.yml
+  when:
+    - ansible_facts.distribution == 'Archlinux'
+
 - name: Install tlp custom configuration
   ansible.builtin.copy:
     src: 01-mytlp.conf

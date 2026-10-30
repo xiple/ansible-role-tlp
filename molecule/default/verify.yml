@@ -22,6 +22,11 @@
       when:
         - ansible_facts.distribution == 'Fedora'
 
+    - name: Include Archlinux verify tasks
+      ansible.builtin.include_tasks: tasks/verify-archlinux.yml
+      when:
+        - ansible_facts.distribution == 'Archlinux'
+
     - name: Get information on tlp configuration drop-in file
       ansible.builtin.stat:
         path: "{{ tlp_custom_dropin_path }}"
